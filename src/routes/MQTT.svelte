@@ -6,11 +6,13 @@
 
     import type { MqttClient, IClientOptions } from "mqtt";
 
-	const MQTT_HOST = "ws://broker.emqx.io:8083/mqtt";
+	const MQTT_HOST = "ws://b37.mqtt.one:8083/mqtt";
 	const MQTT_QOS = 0;
 
 	let mqttClient: MqttClient;
 	export let powerValue = 0;
+	export let username: string;
+	export let password: string;
 
 	function createMqttClient(): MqttClient {
 		const clientId = "mqttjs_" + Math.random().toString(16).substr(2, 8);
@@ -18,6 +20,8 @@
 			keepalive: 60,
 			clientId: clientId,
 			protocolId: "MQTT",
+			username,
+			password,
 			protocolVersion: 4,
 			clean: true,
 			reconnectPeriod: 1000,

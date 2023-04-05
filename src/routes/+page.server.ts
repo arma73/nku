@@ -1,5 +1,6 @@
 import db from "./db";
 import { MQTT_TOPIC } from "./consts";
+import { MQTT_ONE_USERNAME, MQTT_ONE_PASSWORD } from "$env/static/private";
 
 import type { PageServerLoad } from "./$types";
 import type { Database } from "sqlite3";
@@ -63,5 +64,7 @@ export const load = (async () => {
 
     return {
         value,
+        username: MQTT_ONE_USERNAME,
+        password: MQTT_ONE_PASSWORD,
     };
 }) satisfies PageServerLoad;
